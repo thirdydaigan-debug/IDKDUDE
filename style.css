@@ -1,0 +1,66 @@
+/* Page styling */
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background: pink;
+  color: white;
+  padding-top: 50px;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2em;
+  position: relative;
+  z-index: 2;
+}
+
+/* Buttons */
+button {
+  font-size: 20px;
+  padding: 12px 25px;
+  margin: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 2;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.yes { background-color: red; }
+.no { background-color: darkred; }
+
+/* Hearts animation */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  transform: rotate(-45deg);
+  animation: floatUp linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after  { top: 0; left: 10px; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+  100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
+}
