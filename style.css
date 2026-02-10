@@ -1,18 +1,40 @@
-/* Page styling */
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Body & background */
 body {
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  background: pink;
-  color: white;
-  padding-top: 50px;
   margin: 0;
+  padding: 0;
+  height: 100vh;
+
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+
+  background-image: url("bg.jpg"); /* 🔥 your photo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  background-color: rgba(0, 0, 0, 0.35);
+  background-blend-mode: darken;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   overflow: hidden;
 }
 
+/* Title */
 h1 {
-  font-size: 2em;
-  position: relative;
-  z-index: 2;
+  font-size: 42px;
+  margin-bottom: 30px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.7);
 }
 
 /* Buttons */
@@ -23,28 +45,23 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  position: relative;
-  z-index: 2;
+  transition: transform 0.2s, background 0.2s;
 }
 
 button:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: pink;
 }
 
-.yes { background-color: red; }
-.no { background-color: darkred; }
-
-/* Hearts animation */
+/* Hearts */
 .heart {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: red;
-  transform: rotate(-45deg);
-  animation: floatUp linear infinite;
+  transform: rotate(45deg);
+  animation: float 6s infinite ease-in;
+  opacity: 0.7;
 }
 
 .heart::before,
@@ -57,10 +74,33 @@ button:hover {
   border-radius: 50%;
 }
 
-.heart::before { top: -10px; left: 0; }
-.heart::after  { top: 0; left: 10px; }
-
-@keyframes floatUp {
-  0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
-  100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
+.heart::before {
+  top: -15px;
+  left: 0;
 }
+
+.heart::after {
+  left: -15px;
+  top: 0;
+}
+
+/* Heart animation */
+@keyframes float {
+  0% {
+    bottom: -50px;
+    left: calc(100% * var(--i));
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    bottom: 110%;
+    opacity: 0;
+  }
+}
+
+/* Randomize hearts */
+.heart:nth-child(3) { left: 20%; animation-delay: 0s; }
+.heart:nth-child(4) { left: 50%; animation-delay: 2s; }
+.heart:nth-child(5) { left: 80%; animation-delay: 4s; }
