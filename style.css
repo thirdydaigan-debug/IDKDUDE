@@ -17,9 +17,9 @@ h1 {
 
 /* Buttons */
 button {
-  font-size: 20px;
+  font-size: 30px;
   padding: 12px 25px;
-  margin: 20px;
+  margin: 30px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -51,8 +51,8 @@ button:hover {
 .heart::after {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: red;
   border-radius: 50%;
 }
