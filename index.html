@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Surprise 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>💖 Will you be my Valentine? 💖</h1>
+  <button class="yes" id="yesBtn">Yes</button>
+  <button class="no" id="noBtn">No</button>
+
+  <div id="hearts"></div>
+
+  <script>
+    // Yes/No button functionality
+    document.getElementById("yesBtn").addEventListener("click", function() {
+      alert("💘 Yay! You just made my day! 💘");
+      startHearts();
+    });
+
+    document.getElementById("noBtn").addEventListener("click", function() {
+      alert("💔 Oh no! That's okay, I still think you're amazing! 💔");
+    });
+
+    // Heart animation
+    function startHearts() {
+      const heartsContainer = document.getElementById("hearts");
+
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = 2 + Math.random() * 3 + "s";
+        heartsContainer.appendChild(heart);
+
+        // Remove heart after animation
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }, 200);
+    }
+  </script>
+</body>
+</html>
