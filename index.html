@@ -5,52 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ckret</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    #responseEmoji {
-      font-size: 80px;
-      margin-top: 20px;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
-  <h1>Coffee Date sa 14?☕</h1>
-  <button class="yes" id="yesBtn">Ma Yes</button>
-  <button class="no" id="noBtn">Ma No</button>
 
-  <div id="responseEmoji"></div>
-  <div id="hearts"></div>
+  <div class="container">
+    <h1>Coffee Date sa 14? ☕</h1>
+
+    <img src="cute.jpg" alt="Cute Photo" class="photo">
+
+    <div class="buttons">
+      <button class="yes" id="yesBtn">Ma Yes</button>
+      <button class="no" id="noBtn">Ma No</button>
+    </div>
+  </div>
+
+  <div id="emojiContainer"></div>
 
   <script>
-    const emojiDisplay = document.getElementById("responseEmoji");
+    const container = document.getElementById("emojiContainer");
 
     document.getElementById("yesBtn").addEventListener("click", function() {
       alert("Yay! You just made my day! See you 😊");
-      emojiDisplay.textContent = "❤️";
-      startHearts();
+      spawnEmoji("❤️");
     });
 
     document.getElementById("noBtn").addEventListener("click", function() {
       alert("Oh no! That's okay, Better luck next time! 😅");
-      emojiDisplay.textContent = "😢";
+      spawnEmoji("😢");
     });
 
-    // Heart animation
-    function startHearts() {
-      const heartsContainer = document.getElementById("hearts");
+    function spawnEmoji(emoji) {
+      const interval = setInterval(() => {
 
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.animationDuration = 2 + Math.random() * 3 + "s";
-        heartsContainer.appendChild(heart);
+        for (let i = 0; i < 2; i++) { // one left, one right
+          const el = document.createElement("div");
+          el.classList.add("floatingEmoji");
+          el.textContent = emoji;
 
-        setTimeout(() => {
-          heart.remove();
-        }, 5000);
-      }, 200);
+          el.style.bottom = "0px";
+
+          if (i === 0) {
+            el.style.left = "10px";
+          } else {
+            el.style.right = "10px";
+          }
+
+          container.appendChild(el);
+
+          setTimeout(() => {
+            el.remove();
+          }, 4000);
+        }
+
+      }, 300);
+
+      setTimeout(() => {
+        clearInterval(interval);
+      }, 4000);
     }
   </script>
+
 </body>
 </html>
