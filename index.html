@@ -8,14 +8,14 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>Coffee Date sa 14? ☕</h1>
+  <div class="overlay">
+    <div class="container">
+      <h1>Coffee Date sa 14? ☕</h1>
 
-    <img src="cute.jpg" alt="Cute Photo" class="photo">
-
-    <div class="buttons">
-      <button class="yes" id="yesBtn">Ma Yes</button>
-      <button class="no" id="noBtn">Ma No</button>
+      <div class="buttons">
+        <button class="yes" id="yesBtn">Ma Yes</button>
+        <button class="no" id="noBtn">Ma No</button>
+      </div>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
     function spawnEmoji(emoji) {
       const interval = setInterval(() => {
 
-        for (let i = 0; i < 2; i++) { // one left, one right
+        for (let i = 0; i < 2; i++) {
           const el = document.createElement("div");
           el.classList.add("floatingEmoji");
           el.textContent = emoji;
@@ -45,9 +45,9 @@
           el.style.bottom = "0px";
 
           if (i === 0) {
-            el.style.left = "10px";
+            el.style.left = "15px";
           } else {
-            el.style.right = "10px";
+            el.style.right = "15px";
           }
 
           container.appendChild(el);
