@@ -5,23 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ckret</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    #responseEmoji {
+      font-size: 80px;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <h1>Coffee Date sa 14?☕</h1>
   <button class="yes" id="yesBtn">Ma Yes</button>
   <button class="no" id="noBtn">Ma No</button>
 
+  <div id="responseEmoji"></div>
   <div id="hearts"></div>
 
   <script>
-    // Yes/No button functionality
+    const emojiDisplay = document.getElementById("responseEmoji");
+
     document.getElementById("yesBtn").addEventListener("click", function() {
-      alert(" Yay! You just made my day! See you 😊  ");
+      alert("Yay! You just made my day! See you 😊");
+      emojiDisplay.textContent = "❤️";
       startHearts();
     });
 
     document.getElementById("noBtn").addEventListener("click", function() {
-      alert(" Oh no! That's okay, Better luck next time! 😅");
+      alert("Oh no! That's okay, Better luck next time! 😅");
+      emojiDisplay.textContent = "😢";
     });
 
     // Heart animation
@@ -35,7 +46,6 @@
         heart.style.animationDuration = 2 + Math.random() * 3 + "s";
         heartsContainer.appendChild(heart);
 
-        // Remove heart after animation
         setTimeout(() => {
           heart.remove();
         }, 5000);
